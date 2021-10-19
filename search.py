@@ -128,8 +128,37 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    # Very similar to DFS but uses a queue instead to ensure we traverse layer by layer
+    from util import Queue # Queues are typically used to perfrom BFS
+    s = problem.getStartState() 
+    visited = {s: False}
+    path = {s: []}
+    
+    # Initialize BFS and begin
+    Q = Queue()
+    Q.push(s)
+    visited[s] = True
+    end_state = s
 
+    while not Q.isEmpty():
+        v = Q.pop()
+        if problem.isGoalState(v):
+            end_state = v
+            break
+
+        for neighbor in problem.getSuccessors(v):
+            u = neighbor[0]
+            dir = neighbor[1]
+            cost = neighbor[2]
+            if u not in visited or not visited[u]:
+                visited[u] = True
+                Q.push(u)
+                path[u] = path[v][:]
+                path[u].append(dir)
+                
+    return path[end_state]
+
+    
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
