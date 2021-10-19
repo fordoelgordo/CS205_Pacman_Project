@@ -87,13 +87,15 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
-    # problem.getStartState() - returns the starting coordinates of Pacman - need to search from here
-    # problem.isGoalState(problem.getStartState()) # Are the given coordinates the goal?
-    # problem.getSuccessors(state) - returns a tuple of the available positions you can get to
-    #   problem.getSuccessors(state)[0]: (x,y) - successor to the current state
-    #   problem.getSuccessors(state)[1]: 'action' - the action req'd to get to the successor state
-    #   problem.getSuccessors(state)[2]: 'cost' - the incremental cost of reaching the successor state
-    from game import Directions
+    """
+    Notes about the problem object we're provided:
+      1. problem.getStartState() - returns the starting coordinates of Pacman - need to search from here
+      2. problem.isGoalState(problem.getStartState()) - Are the given coordinates the goal?
+      3. problem.getSuccessors(state) - returns a tuple of the available positions you can get to
+        (a) problem.getSuccessors(state)[0]: (x,y) - successor to the current state
+        (b) problem.getSuccessors(state)[1]: 'action' - the action req'd to get to the successor state
+        (c) problem.getSuccessors(state)[2]: 'cost' - the incremental cost of reaching the successor state
+    """
     from util import Stack # Using a Stack to implement iterative DFS
     s = problem.getStartState() 
     visited = {s: False}
