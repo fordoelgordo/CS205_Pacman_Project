@@ -96,12 +96,14 @@ def depthFirstSearch(problem):
         (b) problem.getSuccessors(state)[1]: 'action' - the action req'd to get to the successor state
         (c) problem.getSuccessors(state)[2]: 'cost' - the incremental cost of reaching the successor state
     """
+    """
     from util import Stack # Using a Stack to implement iterative DFS
     s = problem.getStartState() 
     visited = {s: False}
     path = {s: []}
     
     # Initialize DFS and begin
+    
     S = Stack()
     S.push(s)
     visited[s] = True
@@ -124,6 +126,26 @@ def depthFirstSearch(problem):
                 path[u].append(dir)
                 
     return path[end_state]
+    """
+
+    from util import Stack
+    S = Stack()
+    S.push(problem.getStartState()) #Starting state
+    visited = [] #Track visited
+    path = []   #Final path
+    currentPath = Stack() #Use to move
+    currentLocation = S.pop()
+    while not problem.isGoalState(currentLocation):
+        if currentLocation not in visited:
+            visited.append(currentLocation) #Add current location to visited
+            neighbor = problem.getSuccessors(currentLocation)
+            for location,direction,value in neighbor: #getSuccessors returns 3 separate variables
+                S.push(location) #Push neighbor not visited in stack
+                tempPath = path + [direction] #Temp path with new direction
+                currentPath.push(tempPath)
+        currentLocation = S.pop()
+        path = currentPath.pop()
+    return path    
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
