@@ -127,7 +127,6 @@ def depthFirstSearch(problem):
                 
     return path[end_state]
     """
-
     from util import Stack
     S = Stack()
     S.push(problem.getStartState()) #Starting state
