@@ -1,5 +1,5 @@
 # CS205 Pacman Project
-Ford St. John 862125078
+Ford St. John 862125078<br/>
 Matthew Duc Nguyen
 
 ## Question 1
@@ -55,3 +55,51 @@ Record:        Win
 python pacman.py -l bigMaze -p SearchAgent -a fn=bfs -z .5
 ```
 ![Q2_bigmaze_success](https://user-images.githubusercontent.com/11414055/138005394-d79821e8-9f27-400d-b7a9-4bb9fcd20dee.png)
+
+
+## Question 3
+#### Screenshots of successful runs:
+```python
+python pacman.py -l mediumMaze -p SearchAgent -a fn=ucs
+```
+![Q3_mediummaze_success](https://user-images.githubusercontent.com/11414055/138021564-0b30f2c7-7a64-4d11-8fb2-0f39a0a3d4a2.png)
+```bash
+$ python pacman.py -l mediumMaze -p SearchAgent -a fn=ucs
+[SearchAgent] using function ucs
+[SearchAgent] using problem type PositionSearchProblem
+Path found with total cost of 68 in 0.0 seconds
+Search nodes expanded: 269
+Pacman emerges victorious! Score: 442
+Average Score: 442.0     
+Scores:        442.0     
+Win Rate:      1/1 (1.00)
+Record:        Win   
+```
+```python
+python pacman.py -l mediumDottedMaze -p StayEastSearchAgent
+```
+![Q3_mediumdottedmaze_success](https://user-images.githubusercontent.com/11414055/138021789-9146d8e4-7b14-412e-ac58-736a50183597.png)
+```bash
+$ python pacman.py -l mediumDottedMaze -p StayEastSearchAgent
+Path found with total cost of 1 in 0.0 seconds
+Search nodes expanded: 186
+Pacman emerges victorious! Score: 646
+Average Score: 646.0     
+Scores:        646.0     
+Win Rate:      1/1 (1.00)
+Record:        Win 
+```
+```python
+python pacman.py -l mediumScaryMaze -p StayWestSearchAgent
+```
+![Q3_mediumscarymaze_success](https://user-images.githubusercontent.com/11414055/138021994-34bbaae3-b872-4526-a22a-83d33d32aef9.png)
+```bash
+$ python pacman.py -l mediumScaryMaze -p StayWestSearchAgent --frameTime 0
+Path found with total cost of 68719479864 in 0.0 seconds
+Search nodes expanded: 108
+Pacman emerges victorious! Score: 418
+Average Score: 418.0
+Scores:        418.0     
+Win Rate:      1/1 (1.00)
+Record:        Win 
+```
