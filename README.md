@@ -103,3 +103,11 @@ Scores:        418.0
 Win Rate:      1/1 (1.00)
 Record:        Win 
 ```
+
+## Question 4
+#### Screenshots of successful runs:
+```python
+python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic
+```
+![Q4_bigmaze_success](https://user-images.githubusercontent.com/11414055/138022285-d200b3c7-e1a0-4930-8d9d-72c1ae895f88.png)
+
