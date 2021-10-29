@@ -228,7 +228,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     h = heuristic(s, problem)
     g = 0
     f = g + h
-    visited = {s: False}
+    visited = []
     actions = []
 
     # Note that we call the heuristic by passing heuristic(state, problem object) - returns the "cost" between the current state, and the problem objects "goal"
@@ -239,14 +239,14 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         node,actions = frontier.pop()
         if problem.isGoalState(node):
             return actions
-        if node not in visited or not visited[node]:
-            visited[node] = True
+        if node not in visited:
+            visited.append(node)
             for neighbor in problem.getSuccessors(node):
                 neighbor_node = neighbor[0]
                 dir = neighbor[1]
                 cost = neighbor[2]
                 h = heuristic(neighbor_node, problem)
-                if neighbor_node not in visited or not visited[neighbor_node]:
+                if neighbor_node not in visited:
                     directions = actions[:]
                     directions.append(dir)
                     g = problem.getCostOfActions(directions)
@@ -255,7 +255,6 @@ def aStarSearch(problem, heuristic=nullHeuristic):
 
     # If we get here something went wrong
     raise Exception("Something went wrong - we did not find a suitable set of actions to reach the goal state")
-
 
 # Abbreviations
 bfs = breadthFirstSearch

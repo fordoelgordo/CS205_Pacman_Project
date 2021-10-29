@@ -384,7 +384,38 @@ def cornersHeuristic(state, problem):
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
 
     "*** YOUR CODE HERE ***"
-    return 0 # Default to trivial solution
+    """
+    I don't think we learned about admissable vs. consistent heuristics, but here's the way I thought about it, similar to the manhattan/euclidean dist heuristics
+        1. First find the "closest" corner of the remaining corners that need to be reached for the current position that we're at
+        2. From this corner, travel to the next "closest" corner by manhattan distance
+        3. Repeat on this way until all corners are visited
+        4. The heuristic "cost" = total distance from currentPos --> closest corner --> next closest --> ...
+
+        Note that with no walls, this heuristic definitely underestimates the total remaining cost to get from the current position to all 
+        remaining corners.  This assumes that once we get from our current position to the closest remaining corner (by manhattan distance) we can 
+        then get directly from that corner to the next closest corner (ignoring walls) by manhattan distance
+    
+    """
+    currentPos = state[0] # This is the "currentPos" in our state data structure
+    cornersVisited = list(state[1]) # This is a list of the corners that we've visited so far as of currentPosition
+    remainingCorners = list(corners)
+
+    # Find the corners that have yet to be visited
+    for corner in remainingCorners:
+        if corner in cornersVisited:
+            remainingCorners.remove(corner)
+
+    # Now follow the computation outlined above
+    from util import manhattanDistance
+    totalDistance = 0
+    evalPos = currentPos
+    while remainingCorners:
+        distance, corner = min([(manhattanDistance(evalPos, corner), corner) for corner in remainingCorners])
+        totalDistance += distance
+        evalPos = corner
+        remainingCorners.remove(corner)
+
+    return totalDistance
 
 class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
