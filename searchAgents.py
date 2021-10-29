@@ -288,6 +288,7 @@ class CornersProblem(search.SearchProblem):
         # Please add any code here which you would like to use
         # in initializing the problem
         "*** YOUR CODE HERE ***"
+        self.startState = (self.startingPosition, [])
 
     def getStartState(self):
         """
@@ -295,14 +296,24 @@ class CornersProblem(search.SearchProblem):
         space)
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.startState
 
     def isGoalState(self, state):
         """
         Returns whether this search state is a goal state of the problem.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        currentState = state[0]
+        cornersVisited = state[1]
+        if currentState in self.corners:
+            # We're at a corner, check if we've visited it before
+            if currentState not in cornersVisited:
+                cornersVisited.append(currentState)
+            # Since we're at a corner, check if we've now visited all 4 corners
+            return len(cornersVisited) == len(self.corners)
+        else:
+            # We're not at a corner, so the current state is not a goal state
+            return False
 
     def getSuccessors(self, state):
         """
@@ -325,6 +336,19 @@ class CornersProblem(search.SearchProblem):
             #   hitsWall = self.walls[nextx][nexty]
 
             "*** YOUR CODE HERE ***"
+            # Note that our state is of the form (currentPosition, [visited corners])
+            x,y = state[0]
+            cornersVisited = list(state[1])
+            dx,dy = Actions.directionToVector(action)
+            nextx,nexty = int(x + dx), int(y + dy)
+            nextPosition = (nextx, nexty)
+            if not self.walls[nextx][nexty]:
+                # If we don't hit a wall, we can go to the next position.  If the next position is a corner, and we haven't visited it, we can mark it as a visited corner
+                if nextPosition in self.corners:
+                    if nextPosition not in cornersVisited:
+                        cornersVisited.append(nextPosition)
+                # Add the nextPosition to the successors
+                successors.append( ((nextPosition, cornersVisited), action, 1) )
 
         self._expanded += 1 # DO NOT CHANGE
         return successors
