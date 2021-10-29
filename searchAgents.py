@@ -390,20 +390,20 @@ def cornersHeuristic(state, problem):
         2. From this corner, travel to the next "closest" corner by manhattan distance
         3. Repeat on this way until all corners are visited
         4. The heuristic "cost" = total distance from currentPos --> closest corner --> next closest --> ...
-
+        
         Note that with no walls, this heuristic definitely underestimates the total remaining cost to get from the current position to all 
         remaining corners.  This assumes that once we get from our current position to the closest remaining corner (by manhattan distance) we can 
         then get directly from that corner to the next closest corner (ignoring walls) by manhattan distance
     
     """
     currentPos = state[0] # This is the "currentPos" in our state data structure
-    cornersVisited = list(state[1]) # This is a list of the corners that we've visited so far as of currentPosition
-    remainingCorners = list(corners)
+    cornersVisited = state[1] # This is a list of the corners that we've visited so far as of currentPosition
+    remainingCorners = []
 
-    # Find the corners that have yet to be visited
-    for corner in remainingCorners:
-        if corner in cornersVisited:
-            remainingCorners.remove(corner)
+    # Find the corners that haven't been visited as of currentPos
+    for corner in list(corners):
+        if corner not in cornersVisited:
+            remainingCorners.append(corner)
 
     # Now follow the computation outlined above
     from util import manhattanDistance
