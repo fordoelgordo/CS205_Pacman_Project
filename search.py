@@ -149,6 +149,7 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
+    """
     # Very similar to DFS but uses a queue instead to ensure we traverse layer by layer
     from util import Queue # Queues are typically used to perfrom BFS
     s = problem.getStartState() 
@@ -178,6 +179,26 @@ def breadthFirstSearch(problem):
                 path[u].append(dir)
                 
     return path[end_state]
+    """
+    from util import Queue
+    frontier = Queue() #Search frontier
+    frontier.push(problem.getStartState()) #Initialize queue
+    visited = []
+    tempPath = []
+    path = []
+    pathToCurrent = Queue()
+    currState = frontier.pop() #Begin search
+    while not problem.isGoalState(currState):
+        if currState not in visited:
+            visited.append(currState)
+            successors = problem.getSuccessors(currState)
+            for child,direction,value in successors:
+                frontier.push(child)
+                tempPath = path+[direction]
+                pathToCurrent.push(tempPath)
+        currState = frontier.pop()
+        path = pathToCurrent.pop()
+    return path
 
     
 def uniformCostSearch(problem):
@@ -227,6 +248,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
             g: the movement cost to get from the starting point to a given square, following the path used to get there
             h: the estimated movement cost to move from the given square to the final destination, referred to as a "heuristic" (smart guess) 
     """
+    """
     from util import PriorityQueue
     s = problem.getStartState() 
     h = heuristic(s, problem)
@@ -259,7 +281,29 @@ def aStarSearch(problem, heuristic=nullHeuristic):
 
     # If we get here something went wrong
     raise Exception("Something went wrong - we did not find a suitable set of actions to reach the goal state")
-
+    """
+    from util import Queue,PriorityQueue
+    frontier = PriorityQueue()
+    frontier.push(problem.getStartState(),0)
+    currState = frontier.pop()
+    visited = []
+    tempPath = []
+    path = []
+    pathToCurrent = PriorityQueue()
+    while not problem.isGoalState(currState):
+        if currState not in visited:
+            visited.append(currState)
+            successors = problem.getSuccessors(currState)
+            for child,direction,value in successors:
+                tempPath = path + [direction]
+                cost = problem.getCostOfActions(tempPath) + heuristic(child,problem)
+                if child not in visited:
+                    frontier.push(child,cost)
+                    pathToCurrent.push(tempPath,cost)
+        currState = frontier.pop()
+        path = pathToCurrent.pop()
+    return path
+    
 
 # Abbreviations
 bfs = breadthFirstSearch
