@@ -123,4 +123,11 @@ python pacman.py -l mediumCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
 ```
 ![05 medium corners](https://user-images.githubusercontent.com/57783476/139521445-71aec2f9-a430-4935-972d-b5f8afd524a7.png)
 
+## Question 6
+#### Screenshots of successful runs:
+```python
+python pacman.py -l mediumCorners -p AStarCornersAgent -z 0.5
+```
+![06 mediumcorners heuristic](https://user-images.githubusercontent.com/57783476/139521541-941b37f2-8a1a-4194-bca1-fe8250194bf0.png)
+
 
