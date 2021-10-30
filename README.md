@@ -116,7 +116,8 @@ python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattan
 #### Screenshots of successful runs:
 ```python
 python pacman.py -l tinyCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
-```![Screen Shot 2021-10-29 at 10 21 13 PM](https://user-images.githubusercontent.com/57783476/139521327-8d1cec50-f0c8-48bc-ad53-edca210c66b5.png)
+```
+![05 tiny corners](https://user-images.githubusercontent.com/57783476/139521327-8d1cec50-f0c8-48bc-ad53-edca210c66b5.png)
 
 
 
