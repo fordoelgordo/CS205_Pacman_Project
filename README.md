@@ -118,6 +118,9 @@ python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattan
 python pacman.py -l tinyCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
 ```
 ![05 tiny corners](https://user-images.githubusercontent.com/57783476/139521327-8d1cec50-f0c8-48bc-ad53-edca210c66b5.png)
-
+```python
+python pacman.py -l mediumCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
+```
+![05 medium corners](https://user-images.githubusercontent.com/57783476/139521445-71aec2f9-a430-4935-972d-b5f8afd524a7.png)
 
 
