@@ -118,10 +118,29 @@ python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattan
 python pacman.py -l tinyCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
 ```
 ![05 tiny corners](https://user-images.githubusercontent.com/57783476/139521327-8d1cec50-f0c8-48bc-ad53-edca210c66b5.png)
+```bash
+Path found with total cost of 28 in 0.0 seconds
+Search nodes expanded: 435
+Pacman emerges victorious! Score: 512
+Average Score: 512.0
+Scores:        512.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+```
+
 ```python
 python pacman.py -l mediumCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
 ```
 ![05 medium corners](https://user-images.githubusercontent.com/57783476/139521445-71aec2f9-a430-4935-972d-b5f8afd524a7.png)
+```bash
+Path found with total cost of 106 in 0.2 seconds
+Search nodes expanded: 2448
+Pacman emerges victorious! Score: 434
+Average Score: 434.0
+Scores:        434.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+```
 
 ## Question 6
 #### Screenshots of successful runs:
@@ -129,5 +148,14 @@ python pacman.py -l mediumCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
 python pacman.py -l mediumCorners -p AStarCornersAgent -z 0.5
 ```
 ![06 mediumcorners heuristic](https://user-images.githubusercontent.com/57783476/139521541-941b37f2-8a1a-4194-bca1-fe8250194bf0.png)
+```bash
+Path found with total cost of 106 in 9.9 seconds
+Search nodes expanded: 978
+Pacman emerges victorious! Score: 434
+Average Score: 434.0
+Scores:        434.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+```
 
 
