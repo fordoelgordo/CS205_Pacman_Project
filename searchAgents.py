@@ -491,7 +491,15 @@ def foodHeuristic(state, problem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
-    return 0
+    #Note that foodGrid specifies the remaining food as of "position"
+    #Try 1 - simply return the distance from the current position to the food furthest away.  We know Pacman needs to travel at least that far
+    from util import manhattanDistance
+    max_dist = 0
+    for food in foodGrid.asList():
+        if manhattanDistance(position, food) > max_dist:
+            max_dist = manhattanDistance(position, food)
+
+    return max_dist
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
