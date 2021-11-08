@@ -158,4 +158,37 @@ Win Rate:      1/1 (1.00)
 Record:        Win
 ```
 
+## Question 7
+#### Screenshot of successful runs:
+```python
+python pacman.py -l trickySearch -p AStarFoodSearchAgent
+```
+![07 trickysearch astarfoodsearch](https://user-images.githubusercontent.com/57783476/140805058-ca8cad35-c8ec-4740-bf5a-0a4fb5c9b525.png)
+```bash
+Path found with total cost of 60 in 36.5 seconds
+Search nodes expanded: 4137
+Pacman emerges victorious! Score: 570
+Average Score: 570.0
+Scores:        570.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+```
+
+## Question 8
+#### Screenshot of successful runs
+```python
+python pacman.py -l bigSearch -p ClosestDotSearchAgent -z .5 
+```
+![08 bigsearch closestdotsearch](https://user-images.githubusercontent.com/57783476/140805834-f8c511a9-dc88-4452-91a8-b26985502606.png)
+```bash
+Path found with cost 350.
+Pacman emerges victorious! Score: 2360
+Average Score: 2360.0
+Scores:        2360.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+```
+
+
+
 
